@@ -38,9 +38,9 @@ public:
     
     }
 
-    float get_median() const{
+    double get_median() const{
 
-        if(left.size() == right.size()) return (float)(left.top() + right.top()) /2.f;
+        if(left.size() == right.size()) return (double) (left.top() + right.top()) /2.f;
 
         else return left.top();
     };
