@@ -7,10 +7,10 @@
 #include "Heap.h"
 
 template <class T>
-using MinHeap = Heap<T, std::greater<T>>;
+using MinHeap = Heap<T, std::less<T>>;
 
 template <class T>
-using MaxHeap = std::priority_queue<T, std::vector<T>>; // Uses std::less<T> by default.
+using MaxHeap = Heap<T, std::greater<T>>; // Uses std::less<T> by default.
 
 template <class T>
 class MedianHeap{

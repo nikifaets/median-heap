@@ -1,11 +1,111 @@
 #include "gtest/gtest.h"
 #include <vector>
+#include "../src/Heap.h"
 #include "../src/MedianHeap.h"
 #include <time.h>
 #include <stdlib.h>
 #include <algorithm>
 #include <random>
 
+class HeapTest : public ::testing::Test{
+
+protected:
+
+    Heap<int, std::less<int>> min_heap_int;
+};
+
+TEST_F(HeapTest, test_push){
+
+    min_heap_int.push(1);
+    min_heap_int.push(1);
+    min_heap_int.push(2);
+
+    ASSERT_EQ(min_heap_int.top(), 1);
+
+    min_heap_int.push(0);
+    ASSERT_EQ(min_heap_int.top(), 0);
+
+    std::cout << "TEMP HEAP ADD 0 \n ";
+    min_heap_int.print();
+
+    min_heap_int.push(-1);
+
+    std::cout << "TEMP HEAP ADD -1 \n ";
+    min_heap_int.print();
+    min_heap_int.push(4);
+    ASSERT_EQ(min_heap_int.top(), -1);
+
+    min_heap_int.push(-1000);
+    min_heap_int.push(-500);
+    min_heap_int.push(1000);
+
+    ASSERT_EQ(min_heap_int.top(), -1000);
+
+    std::cout << "BEFORE POPPING \n";
+    min_heap_int.print();
+
+    min_heap_int.pop();
+
+    std::cout << "AFTER FIRST POP " << std::endl;
+    
+    min_heap_int.print(); 
+
+    min_heap_int.pop();
+
+    ASSERT_EQ(min_heap_int.top(), -1);
+
+    std::cout << "AFTER POPPING " << std::endl;
+    
+    min_heap_int.print(); 
+
+    min_heap_int.pop();
+    min_heap_int.pop();
+
+    ASSERT_EQ(min_heap_int.top(), 1);
+}
+
+TEST_F(HeapTest, test_pop){
+
+    min_heap_int.clear();
+
+    min_heap_int.push(5);
+    min_heap_int.push(4);
+    min_heap_int.push(3);
+    min_heap_int.push(17);
+    min_heap_int.push(200);
+
+    ASSERT_EQ(min_heap_int.top(), 3);
+
+    min_heap_int.pop();
+    ASSERT_EQ(min_heap_int.top(), 4);
+
+    min_heap_int.pop();
+
+    ASSERT_EQ(min_heap_int.top(), 5);
+
+}
+
+TEST_F(HeapTest, test_sort){
+
+    min_heap_int.clear();
+
+    std::vector<int> v{5,6,7,8,1,2,3,4,5,6,1,2,3,8,9,0,11,45,456,567,234,1134324,234};
+
+    for(const int n : v){
+        
+        min_heap_int.push(n);
+    }
+
+    min_heap_int.print();
+    std::sort(v.begin(), v.end());
+
+    for(const int n : v){
+
+        std::cout << " ok. top " << min_heap_int.top() << std::endl;
+        ASSERT_EQ(min_heap_int.top(), n);
+        min_heap_int.pop();
+    }
+}
 
 class MedianHeapTest : public ::testing::Test{
 
