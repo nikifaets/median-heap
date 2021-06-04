@@ -9,6 +9,11 @@
         "initializer_list": "cpp",
         "ranges": "cpp",
         "utility": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "random": "cpp",
+        "iosfwd": "cpp",
+        "functional": "cpp",
+        "svd": "cpp",
+        "*.inc": "cpp"
     }
 }

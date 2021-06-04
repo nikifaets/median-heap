@@ -4,9 +4,10 @@
 #include <queue>
 #include <algorithm>
 #include <assert.h>
+#include "Heap.h"
 
 template <class T>
-using MinHeap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+using MinHeap = Heap<T, std::greater<T>>;
 
 template <class T>
 using MaxHeap = std::priority_queue<T, std::vector<T>>; // Uses std::less<T> by default.
@@ -17,18 +18,20 @@ class MedianHeap{
 public:
 
     MedianHeap(){}
-    void insert(const T n){
+
+    void insert(const T& n){
 
         if(left.size() < 1) left.push(n);
 
         else if(right.size() < 1){
+
             right.push(n);
             if(right.top() < left.top()) switch_tops();
         }
 
         else{
 
-            float median = get_median();
+            double median = get_median();
 
             if(n <= median) left.push(n);
             else right.push(n);
@@ -60,7 +63,6 @@ private:
     }
 
     void rebalance(){
-
 
         assert(left.size() > 0 && right.size() > 0);
 
