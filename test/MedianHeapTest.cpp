@@ -79,10 +79,12 @@ TEST_F(MedianHeapTest, test_int) {
 
     double median = get_random_vec_median<int>(1000, median_heap_int);
     ASSERT_FLOAT_EQ(median, median_heap_int.get_median());
-    
+
     median_heap_int = MedianHeap<int>();
 
     median = get_random_vec_median<int>(10001, median_heap_int);
     ASSERT_FLOAT_EQ(median, median_heap_int.get_median());
 
 }
+
+
