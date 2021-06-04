@@ -5,7 +5,6 @@
 
 void MedianHeap::insert(const int n){
 
-
     if(left.size() < 1) left.push(n);
 
     else if(right.size() < 1){
@@ -45,15 +44,16 @@ void MedianHeap::switch_tops(){
 
 void MedianHeap::rebalance(){
 
+
     assert(left.size() > 0 && right.size() > 0);
-    
-    while(left.size() - right.size() > 1){
+
+    while(left.size() > right.size() + 1){
 
         right.push(left.top());
         left.pop();
     }
 
-    while(right.size() - left.size() > 0){
+    while(right.size() > left.size()){
 
         left.push(right.top());
         right.pop();
