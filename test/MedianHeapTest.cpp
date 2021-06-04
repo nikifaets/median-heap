@@ -7,7 +7,7 @@
 
 TEST(MedianHeapTest, test1) {
 
-    MedianHeap h;
+    MedianHeap<int> h;
 
     std::vector<int> v{1,2,3,4,5,6,7,8,9};
     for(int& a : v){
@@ -29,7 +29,7 @@ TEST(MedianHeapTest, test1) {
     for(int i=0; i<TESTS_NUM; i++){
 
         std::vector<int> v1;
-        MedianHeap h1;
+        MedianHeap<int> h1;
         for(int j=0; j<ARRAY_LEN; j++){
 
             int element = rand() % 100000;
