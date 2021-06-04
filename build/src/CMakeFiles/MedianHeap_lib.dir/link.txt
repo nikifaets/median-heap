@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMedianHeap_lib.a CMakeFiles/MedianHeap_lib.dir/MedianHeap.cpp.o
+/usr/bin/ranlib libMedianHeap_lib.a
