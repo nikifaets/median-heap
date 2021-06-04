@@ -70,26 +70,21 @@ private:
 
     void heapify_up(int i){
 
-        //std::cout << "heap up " << i <<  " " << m_storage[i] << std::endl;
         while( m_comp(m_storage[i], m_storage[get_parent(i)]) && i > 1 ){
 
             std::swap(m_storage[i], m_storage[get_parent(i)]);
             i = get_parent(i);
-            //std::cout << "new i " << i << std::endl;
         }
     }
 
     void heapify_down(int i){
 
-        //std::cout << "heapify down " << m_storage[i] << std::endl;
-        //std::cout << "best child " << m_storage[get_comp_child(i)] << std::endl;
+
         while( m_comp(m_storage[get_comp_child(i)], m_storage[i]) ){
 
             int new_pos = get_comp_child(i);
-            //std::cout << "best child " << m_storage[get_comp_child(i)] << std::endl;
             std::swap(m_storage[i], m_storage[new_pos]);
             i = new_pos;
-            //std::cout << "next best child " << m_storage[i] << std::endl;
         }
     }
     
