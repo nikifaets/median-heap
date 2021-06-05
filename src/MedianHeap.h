@@ -1,18 +1,14 @@
 #pragma once
 
 #include <iostream>
-#include <queue>
-#include <algorithm>
 #include <assert.h>
 #include "Heap.h"
-#include <type_traits>
 
 template <class T>
 using MinHeap = Heap<T, std::less<T>>;
 
 template <class T>
 using MaxHeap = Heap<T, std::greater<T>>;
-
 
 /*
     A data structure that stores an array of data. 
@@ -65,7 +61,7 @@ public:
 
     double get_median() const{
 
-        if(m_left.size() == m_right.size()) return (double) (m_left.top() + m_right.top()) /2.f;
+        if(m_left.size() == m_right.size()) return (double) (m_left.top() + m_right.top()) /2.;
 
         else return m_left.top();
     };
@@ -73,7 +69,7 @@ public:
 private:
 
     /*
-        Eventually gets called ONLY when inserting the second element in order to keep the MedianHeap properties.
+        Can get called ONLY when inserting the second element in order to keep the MedianHeap properties.
     */
     void switch_tops(){
 
@@ -92,7 +88,7 @@ private:
         assert(m_left.size() > 0 && m_right.size() > 0);
 
         while(m_left.size() > m_right.size() + 1){
-
+            
             m_right.push(m_left.top());
             m_left.pop();
         }
@@ -108,6 +104,5 @@ private:
 
     MinHeap<T> m_right;
     MaxHeap<T> m_left;
-
 
 };

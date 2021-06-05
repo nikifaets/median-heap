@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <assert.h>
-#include <type_traits>
 
 /*
     A binary heap class, can be both min heap and max heap, depending on the Comp template argument.
@@ -95,7 +94,6 @@ private:
 
     void heapify_down(int i){
 
-
         while( m_comp(m_storage[get_comp_child(i)], m_storage[i]) ){
 
             int new_pos = get_comp_child(i);
@@ -104,7 +102,6 @@ private:
         }
     }
     
-
 private:
 
     std::vector<T> m_storage;

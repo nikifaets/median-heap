@@ -7,14 +7,10 @@
 #include <algorithm>
 #include <random>
 
-class HeapTest : public ::testing::Test{
 
-protected:
+TEST(HeapTest, test_push){
 
-    Heap<int, std::less<int>> min_heap_int;
-};
-
-TEST_F(HeapTest, test_push){
+    MinHeap<int> min_heap_int;
 
     min_heap_int.push(1);
     min_heap_int.push(1);
@@ -38,8 +34,9 @@ TEST_F(HeapTest, test_push){
 
 }
 
-TEST_F(HeapTest, test_pop){
+TEST(HeapTest, test_pop){
 
+    MinHeap<int> min_heap_int;
     min_heap_int.clear();
 
     min_heap_int.push(5);
@@ -69,7 +66,9 @@ TEST_F(HeapTest, test_pop){
 
 }
 
-TEST_F(HeapTest, test_sort){
+TEST(HeapTest, test_sort){
+
+    MinHeap<int> min_heap_int;
 
     min_heap_int.clear();
 
@@ -88,19 +87,6 @@ TEST_F(HeapTest, test_sort){
         min_heap_int.pop();
     }
 }
-
-class MedianHeapTest : public ::testing::Test{
-
-
-protected:
-
-    void SetUp() override{}
-
-    MedianHeap<int> median_heap_int;
-    MedianHeap<float> median_heap_float;
-    MedianHeap<unsigned long long> median_heap_ull;
-
-};
 
 template <class T>
 double get_random_vec_median(const int arr_len, MedianHeap<T>& h){
@@ -132,8 +118,9 @@ double get_random_vec_median(const int arr_len, MedianHeap<T>& h){
 
 }
 
-TEST_F(MedianHeapTest, test_float) {
+TEST(MedianHeapTest, test_float) {
 
+    MedianHeap<float> median_heap_float;
     double median = get_random_vec_median<float>(1000, median_heap_float);
     ASSERT_FLOAT_EQ(median, median_heap_float.get_median());
 
@@ -144,7 +131,9 @@ TEST_F(MedianHeapTest, test_float) {
 
 }
 
-TEST_F(MedianHeapTest, test_ull) {
+TEST(MedianHeapTest, test_ull) {
+
+    MedianHeap<unsigned long long> median_heap_ull;
 
     double median = get_random_vec_median<unsigned long long>(1000, median_heap_ull);
     ASSERT_FLOAT_EQ(median, median_heap_ull.get_median());
@@ -157,8 +146,10 @@ TEST_F(MedianHeapTest, test_ull) {
 }
 
 
-TEST_F(MedianHeapTest, test_int) {
+TEST(MedianHeapTest, test_int) {
 
+    MedianHeap<int> median_heap_int;
+    
     double median = get_random_vec_median<int>(1000, median_heap_int);
     ASSERT_FLOAT_EQ(median, median_heap_int.get_median());
 
