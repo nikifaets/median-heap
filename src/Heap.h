@@ -21,6 +21,8 @@ class Heap{
 
 public:
 
+    // Default nullary constructor, copy constructor, copy-assignment operator and destructor work fine for this class.
+
     const T& top() const{ 
         
         assert(m_storage.size() > 1);
@@ -69,7 +71,7 @@ private:
     int get_parent(const int i) const { return i / 2; }
     int get_left(const int i) const { return 2 * i; }
     int get_right(const int i) const {return 2 * i + 1; }
-    
+
     int get_comp_child(const int i) const{
 
         int left = get_left(i);

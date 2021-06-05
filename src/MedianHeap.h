@@ -35,6 +35,8 @@ class MedianHeap{
 
 public:
 
+    // Default nullary constructor, copy constructor, copy-assignment operator and destructor work fine for this class.
+
     MedianHeap(){}
 
     void insert(const T& n){
