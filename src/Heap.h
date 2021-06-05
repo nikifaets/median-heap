@@ -108,3 +108,9 @@ private:
     Comp m_comp;
 
 };
+
+template <class T>
+using MinHeap = Heap<T, std::less<T>>;
+
+template <class T>
+using MaxHeap = Heap<T, std::greater<T>>;

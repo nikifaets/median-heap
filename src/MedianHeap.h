@@ -4,12 +4,6 @@
 #include <assert.h>
 #include "Heap.h"
 
-template <class T>
-using MinHeap = Heap<T, std::less<T>>;
-
-template <class T>
-using MaxHeap = Heap<T, std::greater<T>>;
-
 /*
     A data structure that stores an array of data. 
     Supports element insertion in O(logN) time and median retrieval in O(1), where N is the number of elements.
@@ -61,10 +55,17 @@ public:
 
     double get_median() const{
 
-        if(m_left.size() == m_right.size()) return (double) (m_left.top() + m_right.top()) /2.;
+        assert(size() > 0);
+
+        if(m_left.size() == m_right.size()) return (double) (m_left.top() + m_right.top()) / 2.;
 
         else return m_left.top();
     };
+
+    size_t size() const{
+
+        return m_left.size() + m_right.size();
+    }
 
 private:
 

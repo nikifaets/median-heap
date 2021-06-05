@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 
 set(This MedianHeapTests)
                     
-add_executable (${This} MedianHeapTest.cpp)
+add_executable (${This} MedianHeapTest.cpp HeapTest.cpp)
 
 target_link_libraries(${This}
 
