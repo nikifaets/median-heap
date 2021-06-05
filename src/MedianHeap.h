@@ -5,12 +5,30 @@
 #include <algorithm>
 #include <assert.h>
 #include "Heap.h"
+#include <type_traits>
 
 template <class T>
 using MinHeap = Heap<T, std::less<T>>;
 
 template <class T>
-using MaxHeap = Heap<T, std::greater<T>>; // Uses std::less<T> by default.
+using MaxHeap = Heap<T, std::greater<T>>;
+
+
+/*
+    A data structure that stores an array of data. 
+    Supports element insertion in O(logN) time and median retrieval in O(1), where N is the number of elements.
+
+    The frist half of the array is held in a max heap and the second in a min heap. 
+    Thus, the size of the right heap is always N/2 and the size of the left heap is N/2 when N is even and N/2 + 1 when N is odd. (1)
+    The median is the top element of the left heap when N is odd.
+    The median is the average of the top element of each heap when N is even.
+
+    A new element is pushed in the left heap in case it is less or equal to the median, or in the right heap if otherwise.
+    After insertion, the two heaps are rebalanced -- elements are popped from one and pushed into the other until 
+    the order in (1) is achieved.
+    The rebalancing happens on every insertion, thus no more than one element would be transferred from one heap to the other.
+
+*/
 
 template <class T>
 class MedianHeap{
@@ -21,6 +39,7 @@ public:
 
     void insert(const T& n){
 
+        // The insertions when size() < 2 need to be handled differently to preserve the MedianHeap properties.
         if(m_left.size() < 1) m_left.push(n);
 
         else if(m_right.size() < 1){
@@ -29,6 +48,7 @@ public:
             if(m_right.top() < m_left.top()) switch_tops();
         }
 
+        // If size() >= 2 proceed naturally.
         else{
 
             double median = get_median();
@@ -50,6 +70,9 @@ public:
 
 private:
 
+    /*
+        Eventually gets called ONLY when inserting the second element in order to keep the MedianHeap properties.
+    */
     void switch_tops(){
 
         int right_top = m_right.top();

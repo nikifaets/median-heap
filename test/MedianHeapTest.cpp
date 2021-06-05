@@ -25,13 +25,8 @@ TEST_F(HeapTest, test_push){
     min_heap_int.push(0);
     ASSERT_EQ(min_heap_int.top(), 0);
 
-    std::cout << "TEMP HEAP ADD 0 \n ";
-    min_heap_int.print();
-
     min_heap_int.push(-1);
 
-    std::cout << "TEMP HEAP ADD -1 \n ";
-    min_heap_int.print();
     min_heap_int.push(4);
     ASSERT_EQ(min_heap_int.top(), -1);
 
@@ -41,27 +36,6 @@ TEST_F(HeapTest, test_push){
 
     ASSERT_EQ(min_heap_int.top(), -1000);
 
-    std::cout << "BEFORE POPPING \n";
-    min_heap_int.print();
-
-    min_heap_int.pop();
-
-    std::cout << "AFTER FIRST POP " << std::endl;
-    
-    min_heap_int.print(); 
-
-    min_heap_int.pop();
-
-    ASSERT_EQ(min_heap_int.top(), -1);
-
-    std::cout << "AFTER POPPING " << std::endl;
-    
-    min_heap_int.print(); 
-
-    min_heap_int.pop();
-    min_heap_int.pop();
-
-    ASSERT_EQ(min_heap_int.top(), 1);
 }
 
 TEST_F(HeapTest, test_pop){
@@ -80,8 +54,18 @@ TEST_F(HeapTest, test_pop){
     ASSERT_EQ(min_heap_int.top(), 4);
 
     min_heap_int.pop();
-
     ASSERT_EQ(min_heap_int.top(), 5);
+
+    min_heap_int.push(-200);
+    min_heap_int.push(-300);
+
+    ASSERT_EQ(min_heap_int.top(), -300);
+
+    min_heap_int.pop();
+    min_heap_int.pop();
+    min_heap_int.pop();
+
+    ASSERT_EQ(min_heap_int.top(), 17);
 
 }
 
@@ -96,12 +80,10 @@ TEST_F(HeapTest, test_sort){
         min_heap_int.push(n);
     }
 
-    min_heap_int.print();
     std::sort(v.begin(), v.end());
 
     for(const int n : v){
 
-        std::cout << " ok. top " << min_heap_int.top() << std::endl;
         ASSERT_EQ(min_heap_int.top(), n);
         min_heap_int.pop();
     }
@@ -121,7 +103,7 @@ protected:
 };
 
 template <class T>
-double get_random_vec_median(int arr_len, MedianHeap<T>& h){
+double get_random_vec_median(const int arr_len, MedianHeap<T>& h){
 
     const int ARR_MAX = 100000;
     const int ARR_MIN = 0;

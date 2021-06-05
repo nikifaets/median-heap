@@ -2,9 +2,21 @@
 
 #include <vector>
 #include <assert.h>
+#include <type_traits>
+
+/*
+    A binary heap class, can be both min heap and max heap, depending on the Comp template argument.
+    Comp has to be a type that supports the () operation of two arguments with type T and returns a boolean.
+    Comp provides an ordering where Comp(a, b) is true if a appears before b.
+
+    The top element of the heap is the first in the order provided by Comp.
+
+    Counting in the heap starts from 1. 
+    This is to preserve the property that for an element with position i, its parent is i/2 and its children are i*2 and i*2 + 1.
+
+*/
 
 template<class T, class Comp>
-
 class Heap{
 
 public:
@@ -51,11 +63,13 @@ public:
             std::cout << "\n";
         }
 }
+
 private:
 
     int get_parent(const int i) const { return i / 2; }
     int get_left(const int i) const { return 2 * i; }
     int get_right(const int i) const {return 2 * i + 1; }
+    
     int get_comp_child(const int i) const{
 
         int left = get_left(i);
