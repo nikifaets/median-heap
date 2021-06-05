@@ -13,11 +13,13 @@ TEST(HeapTest, test_push){
     ASSERT_EQ(min_heap_int.top(), 1);
 
     min_heap_int.push(0);
+    
     ASSERT_EQ(min_heap_int.top(), 0);
 
     min_heap_int.push(-1);
 
     min_heap_int.push(4);
+
     ASSERT_EQ(min_heap_int.top(), -1);
 
     min_heap_int.push(-1000);
@@ -41,9 +43,11 @@ TEST(HeapTest, test_pop){
     ASSERT_EQ(min_heap_int.top(), 3);
 
     min_heap_int.pop();
+
     ASSERT_EQ(min_heap_int.top(), 4);
 
     min_heap_int.pop();
+
     ASSERT_EQ(min_heap_int.top(), 5);
 
     min_heap_int.push(-200);

@@ -27,10 +27,7 @@ double get_random_vec_median(const int arr_len, MedianHeap<T>& h){
 
     std::sort(v.begin(), v.end());
 
-    if(arr_len % 2 == 0){
-
-        return (double) (v[arr_len/2] + v[arr_len/2 - 1]) / 2.f;
-    }
+    if(arr_len % 2 == 0) return (double) (v[arr_len/2] + v[arr_len/2 - 1]) / 2.f;
 
     return double(v[arr_len/2]);
 
@@ -40,11 +37,12 @@ TEST(MedianHeapTest, test_float) {
 
     MedianHeap<float> median_heap_float;
     double median = get_random_vec_median<float>(1000, median_heap_float);
+
     ASSERT_FLOAT_EQ(median, median_heap_float.get_median());
 
     median_heap_float = MedianHeap<float>();
-
     median = get_random_vec_median<float>(10001, median_heap_float);
+
     ASSERT_FLOAT_EQ(median, median_heap_float.get_median());
 
 }
@@ -52,13 +50,13 @@ TEST(MedianHeapTest, test_float) {
 TEST(MedianHeapTest, test_ull) {
 
     MedianHeap<unsigned long long> median_heap_ull;
-
     double median = get_random_vec_median<unsigned long long>(1000, median_heap_ull);
+    
     ASSERT_FLOAT_EQ(median, median_heap_ull.get_median());
 
     median_heap_ull = MedianHeap<unsigned long long>();
-
     median = get_random_vec_median<unsigned long long>(10001, median_heap_ull);
+
     ASSERT_FLOAT_EQ(median, median_heap_ull.get_median());
 
 }
@@ -67,13 +65,13 @@ TEST(MedianHeapTest, test_ull) {
 TEST(MedianHeapTest, test_int) {
 
     MedianHeap<int> median_heap_int;
-
     double median = get_random_vec_median<int>(1000, median_heap_int);
+
     ASSERT_FLOAT_EQ(median, median_heap_int.get_median());
 
     median_heap_int = MedianHeap<int>();
-
     median = get_random_vec_median<int>(10001, median_heap_int);
+
     ASSERT_FLOAT_EQ(median, median_heap_int.get_median());
 
 }

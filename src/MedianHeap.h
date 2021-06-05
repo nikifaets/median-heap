@@ -38,10 +38,8 @@ public:
 
             m_right.push(n);
             if(m_right.top() < m_left.top()) switch_tops();
-        }
 
-        // If size() >= 2 proceed naturally.
-        else{
+        }else{ // If size() >= 2 proceed naturally.
 
             double median = get_median();
 
@@ -50,7 +48,6 @@ public:
 
             rebalance();
         }
-    
     }
 
     double get_median() const{
@@ -68,7 +65,6 @@ public:
     }
 
 private:
-
     /*
         Can get called ONLY when inserting the second element in order to keep the MedianHeap properties.
     */
@@ -100,7 +96,7 @@ private:
             m_right.pop();
         }
     }
-
+    
 private:
 
     MinHeap<T> m_right;

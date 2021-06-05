@@ -21,16 +21,17 @@ class Heap{
 public:
 
     // Default nullary constructor, copy constructor, copy-assignment operator and destructor work fine for this class.
-
     const T& top() const{ 
         
         assert(m_storage.size() > 1);
+        
         return m_storage[1]; 
     }
 
     void pop(){
 
         assert(m_storage.size() > 1);
+
         m_storage[1] = m_storage.back();
         m_storage.erase(std::prev(m_storage.end()));
         heapify_down(1);
@@ -59,8 +60,10 @@ public:
         for(int i=1; i<m_storage.size(); i++){
 
             std::cout << m_storage[i] << " Children : ";
+
             if(get_left(i) < m_storage.size()) std::cout << m_storage[get_left(i)] << " ";
             if(get_right(i) < m_storage.size()) std::cout << m_storage[get_right(i)] << " ";
+
             std::cout << "\n";
         }
 }
