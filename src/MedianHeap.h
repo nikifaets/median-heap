@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <assert.h>
 #include "Heap.h"
 
@@ -9,13 +8,13 @@
     Supports element insertion in O(logN) time and median retrieval in O(1), where N is the number of elements.
 
     The frist half of the array is held in a max heap and the second in a min heap. 
-    Thus, the size of the right heap is always N/2 and the size of the left heap is N/2 when N is even and N/2 + 1 when N is odd. (1)
+    The size of the right heap is always N/2. The size of the left heap is N/2 when N is even and N/2 + 1 when N is odd. (1)
     The median is the top element of the left heap when N is odd.
-    The median is the average of the top element of each heap when N is even.
+    The median is the average of the right's and left's top elements when N is even.
 
-    A new element is pushed in the left heap in case it is less or equal to the median, or in the right heap if otherwise.
+    A new element is pushed in the left heap in case it is less than or equal to the median, or in the right heap if otherwise.
     After insertion, the two heaps are rebalanced -- elements are popped from one and pushed into the other until 
-    the order in (1) is achieved.
+    the ordering in (1) is achieved.
     The rebalancing happens on every insertion, thus no more than one element would be transferred from one heap to the other.
 
 */
@@ -96,7 +95,7 @@ private:
             m_right.pop();
         }
     }
-    
+
 private:
 
     MinHeap<T> m_right;

@@ -2,15 +2,16 @@
 
 #include <vector>
 #include <assert.h>
+#include <iostream>
 
 /*
     A binary heap class, can be both min heap and max heap, depending on the Comp template argument.
-    Comp has to be a type that supports the () operation of two arguments with type T and returns a boolean.
+    Comp has to be a type that supports the () operator taking two arguments with type T and returns a boolean.
     Comp provides an ordering where Comp(a, b) is true if a appears before b.
 
     The top element of the heap is the first in the order provided by Comp.
 
-    Counting in the heap starts from 1. 
+    Indexing in the heap starts from 1. 
     This is to preserve the property that for an element with position i, its parent is i/2 and its children are i*2 and i*2 + 1.
 
 */
@@ -24,7 +25,7 @@ public:
     const T& top() const{ 
         
         assert(m_storage.size() > 1);
-        
+
         return m_storage[1]; 
     }
 
