@@ -61,7 +61,6 @@ TEST(MedianHeapTest, test_ull) {
 
 }
 
-
 TEST(MedianHeapTest, test_int) {
 
     MedianHeap<int> median_heap_int;
@@ -81,7 +80,6 @@ TEST(MedianHeapTest, test_get_median_empty){
     MedianHeap<int> median_heap_int;
 
     ASSERT_DEATH({
-
         double median = median_heap_int.get_median();
     }, "");
 }

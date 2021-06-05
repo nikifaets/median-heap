@@ -13,7 +13,7 @@ TEST(HeapTest, test_push){
     ASSERT_EQ(min_heap_int.top(), 1);
 
     min_heap_int.push(0);
-    
+
     ASSERT_EQ(min_heap_int.top(), 0);
 
     min_heap_int.push(-1);
@@ -99,7 +99,6 @@ TEST(HeapTest, test_get_top_empty){
     MinHeap<int> min_heap_int;
 
     ASSERT_DEATH({
-
         int top = min_heap_int.top();
     }, "");
 }
