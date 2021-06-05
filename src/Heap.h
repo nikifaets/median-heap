@@ -46,15 +46,9 @@ public:
         heapify_up(m_storage.size()-1);
     }
 
-    size_t size() const{
+    size_t size() const{ return m_storage.size(); }
 
-        return m_storage.size();
-    }
-
-    void clear(){
-
-        m_storage.clear();
-    }
+    void clear(){ m_storage.clear(); }
 
     void print(){
 
